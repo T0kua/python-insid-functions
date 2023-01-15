@@ -7,6 +7,9 @@
 * [Математические функции](https://github.com/T0kua/python-insid-functions#%D0%BC%D0%B0%D1%82%D0%B5%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8)
 * [Логические функции](https://github.com/T0kua/python-insid-functions#%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8)
 * [Работа с окружением]()
+* [Генераторы]()
+* [Синтаксический сахар]()
+
 
 ascii complex
 bytearray delattr
@@ -31,36 +34,44 @@ compile
 
 `callable(finc)` - Возврощает **True** для объекта поддерживающего вызов
 
+`format() `
+
 ```
 x = 1
 
-callable(exit) #>>>True
+callable(exit) #True
 
-bin(20) #>>>'0b10100'
+bin(20) #'0b10100'
 
-bool(x) #>>>True
+bool(x) #True
 
-float(x) #>>>1.0
+float(x) #1.0
 
-int(x) #>>>1
+int(x) #1
 
-chr(17257) #>>>'䍩'
+chr(17257) #'䍩'
 
-str(x) #>>>"1"
+str(x) #1"
 ```
 ---
 ### Математические функции
 `abs(int)` - Возвращает модуль числа (избавление от минуса)
-`abs(-5) #>>>5`
+`abs(-5) #5`
+
+`divmod(a,b)` - возвращает кортеж (частное,остаток) где
+
+a : Число. Делимое.
+b : Число. Делитель.
+`divmod(11,2) #(5, 1)`
 ---
 ### Логические функции
 `all(iterable)` - проверяет, все ли указанные **элементы** принимают значение "истина"
 оператор И для всех элементов `element1 == True AND element2 == True AND ... elementN == True`
 
 ```
-all([1,2]) #>>>True
-all([]) #>>False
-all([True,True,False]) #>>>False
+all([1,2]) #True
+all([]) #False
+all([True,True,False]) #False
 ```
 
 `any(iterable)` - проверяет, есть ли хотя бы один **элемент** принимающий значение "истина"
@@ -68,10 +79,37 @@ all([True,True,False]) #>>>False
 
 
 ```
-any([1,2]) #>>>True
-any([]) #>>False
-any([True,True,False]) #>>>True
+any([1,2]) #True
+any([]) #False
+any([True,True,False]) #True
 ```
 ---
 ### Работа с окружением
 `dir`
+
+---
+### Генераторы
+`enumerate(iterable, start=i)` - Возврощает генератор ,отдающий пары счетчик-элемент
+
+```
+for i in enumerate(["a","b","c",],start=0)
+  print(i)
+"""
+(1, "a")
+(2, "b")
+(3, "c")
+"""
+```
+
+filter()
+---
+### Синтаксический сахар
+
+`eval(str) ` - выполняет код из строки
+
+```
+x = input() #in "5 + 25"
+eval(x) #out "30"
+```
+
+`exec()` 
